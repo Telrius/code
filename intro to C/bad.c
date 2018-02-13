@@ -2,7 +2,7 @@
  ============================================================================
  Name        : bad.c
  Author      : Some bad programmer
- Description : A bad program... you'll see why...
+ Description : A bad program... you'll see why!
  ============================================================================
  */
 
