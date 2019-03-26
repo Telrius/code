@@ -6,6 +6,7 @@ public final class OverflowExercise
 	{
 		short acctBal = Short.MAX_VALUE - 3000; // Take note of the data type for acctBal!
 		
+		
 		String input = "0";
 		Scanner scanner = new Scanner(System.in);
 		
@@ -18,7 +19,13 @@ public final class OverflowExercise
 			
 			try
 			{
-				acctBal += Integer.parseInt(input);
+	
+				if(tryDeposit(acctBal, input) == false) {
+					throw new ArithmeticException("Sorry, I can't quite add that to your account.");
+				} else {
+					acctBal += Integer.parseInt(input);
+				}
+				
 			}
 			catch(NumberFormatException nfe)
 			{
@@ -31,9 +38,24 @@ public final class OverflowExercise
 					System.out.println("Sorry, I don't recognize that number.");
 				}
 			}
+			catch(ArithmeticException nfe) {
+				System.out.println("Sorry, I can't quite add that to your account.");
+			}
 		}
 		
 		System.out.println("Thank you, and goodbye.");
 		scanner.close();
 	}	
+	
+	private static boolean tryDeposit(short balance, String input) {
+		
+		short acctBalTest;
+		acctBalTest = balance;
+		balance += Integer.parseInt(input);
+		
+		if(balance < acctBalTest) {
+			return false;
+		}
+		return true;
+	}
 }
