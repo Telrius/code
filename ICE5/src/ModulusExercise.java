@@ -18,7 +18,11 @@ public final class ModulusExercise
 	 */
 	private static int modPow(int a, int b, int p) throws ArithmeticException
 	{
-		// HINT: Consider adding something here!
+
+		if(Math.pow(a, b) <0) {
+			throw new ArithmeticException("Exponent creates a number beyond the bounds of the variable's inclusive range");
+		}
+		
 		if(b == 0)
 		{
 			return 1;   // a^0 = 1 for all a
